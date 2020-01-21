@@ -1,0 +1,65 @@
+
+query getUserAuth($email: String! , $password: String!) {
+    login(email: $email , password: $password) {
+        ...getUser
+    }
+}
+
+query getLoginUser($_id : ObjectId!){
+     user(_id : $_id){
+        ...getUser
+    }
+}
+
+mutation sendSMS($phone:String!){
+    sendOtpToPhone(data:{phoneNumber:$phone})
+}
+
+mutation verifySMS($phone:String!,$otp:String!){
+    verifyOtpPhone(data:{phoneNumber:$phone,otp:$otp})
+}
+
+mutation registrationByPhone($fname:String!, $lname:String!, $phoneNumber:String!, $otp:String!, $email:String!, $password:String!){
+    registerUserWithPhone(data:{firstName:$fname, lastName:$lname, phoneNumber:$phoneNumber, otp:$otp, email:$email, password:$password}){
+        ...getUser
+    }
+}
+
+mutation updateAndCreateUserAddress($fname:String!, $lname:String!, $country:String!, $streetAddress:String!, $postCode:String!, $city:String!, $phoneNumber:String!, $email:String! , $addressId:ObjectId){
+    updateOrCreateAddress(data: { firstName:$fname, lastName:$lname, country:$country, streetAddress:$streetAddress, postCode:$postCode, city:$city, phoneNumber:$phoneNumber, email:$email}, addressId:$addressId){
+        ...getAddress
+    }
+}
+
+mutation userUpdate($fname:String!, $lname:String!, $phoneNumber:String!,$email:String!,$_id:ObjectId!){
+    updateUser(data: {firstName:$fname , lastName:$lname, phoneNumber:$phoneNumber,email:$email}, _id: $_id) {
+        ...getUser
+    }
+}
+
+
+fragment getUser on User {
+    _id
+    avatar
+    firstName
+    lastName
+    phoneNumber
+    email
+    addresses{
+        ...getAddress
+    }
+    token
+}
+
+fragment getAddress on Address {
+    _id
+    firstName
+    lastName
+    streetAddress
+    country
+    city
+    postCode
+    phoneNumber
+    email
+}
+

@@ -1,0 +1,6 @@
+framework module Pods_DhamakaTests {
+  umbrella header "Pods-DhamakaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

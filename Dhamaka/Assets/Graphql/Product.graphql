@@ -1,0 +1,196 @@
+
+query GetProductList ($page : Int!, $limit: Int!){
+    products(pagination: { page : $page, limit: $limit}){
+        docs{
+            ...getProduct
+        }
+    }
+}
+
+query GetProduct($_id : ObjectId!){
+    product(_id : $_id) {
+        ...getProduct
+    }
+}
+
+query GetProducts($ids: [ObjectId!]){
+    productsByMultipleId(data:{ids:$ids}){
+        _id
+        thumnails{
+            image
+        }
+        name
+        price
+    }
+}
+
+query Products($_id : ObjectId!,$page : Int!, $limit: Int!){
+    products(filter:{categoryId:$_id},sort:{},query:{},pagination:{page : $page, limit: $limit}){
+        docs{
+            ...getProduct
+        }
+    }
+}
+
+
+query productsBySeller($_id : ObjectId!,$page : Int!, $limit: Int!){
+    products(filter:{shop:$_id},sort:{},query:{},pagination:{page : $page, limit: $limit}){
+        docs{
+            ...getProduct
+        }
+    }
+}
+
+mutation setOder($shippingDetailsId: ObjectId! , $billingDetailsId: ObjectId!,$product:[OrderProductInput!]!, $paymentmethod:PaymentMethod!, $ordernote:String!){
+    createOrder(data:{shippingDetailsId:$shippingDetailsId , billingDetailsId:$billingDetailsId , products:$product, paymentMethod:$paymentmethod, orderNote:$ordernote}){
+        ...getOrder
+    }
+}
+
+query getCategories($page:Int!, $limit:Int!){
+    categories(pagination:{page:$page,limit:$limit }){
+        docs {
+            ...getCategory
+            child{
+                ...getCategory
+            }
+        }
+    }
+}
+
+query getOrder($_id : ObjectId!, $page : Int!, $limit: Int!){
+    orders(query:{orderedBy:$_id}, pagination:{page:$page , limit:$limit}){
+        docs{
+            _id
+            shippingDetails {
+                ...getAddress
+            }
+            billingDetails {
+                ...getAddress
+            }
+            products {
+                product {
+                    ...getProduct
+                }
+                quantity
+            }
+            status
+            subTotal
+            discount
+            shipping
+            total
+            createdAt
+            paymentMethod
+        }
+    }
+}
+
+query setPromoCode($code:String!){
+    promoCodeByCode(code:$code){
+        ...getPromoCode
+    }
+}
+
+fragment getPromoCode on PromoCode{
+    _id
+    discount
+    code
+    discountType
+    active
+    minimumOrderAmount
+}
+
+fragment getOrder on Order {
+    _id
+    trxId
+    total
+}
+
+fragment getCategory on Category {
+    _id
+    name
+}
+
+fragment getAddress on Address {
+    _id
+    firstName
+    lastName
+    streetAddress
+    country
+    city
+    postCode
+    phoneNumber
+    email
+}
+
+fragment getProduct on Product {
+    _id
+    name
+    price
+    oldPrice
+    shortDescription
+    description
+    shop{
+        ...getShop
+    }
+    thumnails{
+        image
+    }
+    images{
+        image
+    }
+    variantOptions {
+        ...getVariantOption
+    }
+    rating{
+        ...getRating
+    }
+}
+
+fragment getShop on Shop {
+    shippingInfo {
+        ...getShippinginfo
+    }
+}
+
+fragment getShippinginfo on Shippinginfo {
+    shippingPolicy
+    refundPolicy
+}
+
+fragment getRating on Rating {
+    value
+    userCount
+    ratingCount {
+        ...getRatingCount
+    }
+}
+
+fragment getRatingCount on RatingCount {
+    five
+    four
+    three
+    two
+    one
+}
+
+fragment getVariantOption on VariantOption {
+    _id
+    name
+    displayName
+    type
+    selection{
+        _id
+        name
+        displayName
+        value
+        status
+    }
+    values {
+        _id
+        name
+        displayName
+        value
+        status
+    }
+}

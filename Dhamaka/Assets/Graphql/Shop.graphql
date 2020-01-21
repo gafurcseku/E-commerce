@@ -1,0 +1,23 @@
+
+query getShop($page : Int!, $limit: Int!){
+    shops(pagination:{page : $page, limit: $limit}){
+        docs {
+            _id
+            basicInfo {
+                ...getBasicInfo
+            }
+            
+        }
+    }
+}
+
+
+fragment getBasicInfo on Basicinfo {
+    bannar
+    logo
+    shopName
+    address
+    phoneNumber
+    email
+   
+}

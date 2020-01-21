@@ -1,0 +1,15 @@
+
+query GetShopQl {
+    shops(pagination: { page: 1, limit: 5}){
+        docs{
+            _id
+            basicInfo{
+                shopName
+                owner{
+                    _id
+                    firstName
+                }
+            }
+        }
+    }
+}
