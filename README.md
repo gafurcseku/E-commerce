@@ -10,12 +10,12 @@ Use UIScrollerView to make intro slder
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/intro_screen.png" width="250px">
 
 # App Home Screen
-User UITableView and UICollection to show product list. TableView for horizantal list and collectionview is use in tableview cell.
+Use UITableView and UICollection to show product list. TableView for horizantal list and collectionview is use in tableview cell.
 
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/main_menu.png" width="250px">
 
 # Detail screen
-User Custom Segment Controll
+Use Custom Segment Controll
 
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/product_details.png" width="250px">
 
@@ -25,7 +25,7 @@ Use UITableView and other controll. Here Increase tableView Height according tab
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/shopping_cart.png" width="250px">
 
 # Checkout Product
-User UITableview and Custom radio button
+Use UITableview and Custom radio button
 
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/checkout.png" width="250px">
 
