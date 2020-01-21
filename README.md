@@ -29,12 +29,12 @@ User UITableview and Custom radio button
 
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/checkout.png" width="250px">
 
-# All Shop 
+# List of Products
 Here Use UICollection view with automation cell height
 
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/shop.png" width="250px">
 
-# Details of ShoP
-Here UICollectionView and other controll
+# Histroy of User Order
+Here UITableView and other controll
 
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/order_history.png" width="250px">
