@@ -26,12 +26,15 @@ Use UITableView and other controll. Here Increase tableView Height according tab
 
 # Checkout Product
 User UITableview and Custom radio button
+
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/checkout.png" width="250px">
 
 # All Shop 
 Here Use UICollection view with automation cell height
+
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/shop.png" width="250px">
 
 # Details of ShoP
 Here UICollectionView and other controll
+
 <img alt="Shop Details" src="https://github.com/gafurcseku/E-commerce/blob/master/images/order_history.png" width="250px">
